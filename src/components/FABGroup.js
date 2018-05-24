@@ -11,7 +11,7 @@ import {
 import { polyfill } from 'react-lifecycles-compat';
 import Text from './Typography/Text';
 import Card from './Card/Card';
-import ThemedPortal from './Portal/ThemedPortal';
+import Portal from './Portal/Portal';
 import FAB from './FAB';
 import withTheme from '../core/withTheme';
 
@@ -194,7 +194,7 @@ class FABGroup extends React.Component<Props, State> {
     );
 
     return (
-      <ThemedPortal>
+      <Portal>
         {open ? (
           <StatusBar barStyle={theme.dark ? 'light-content' : 'dark-content'} />
         ) : null}
@@ -275,7 +275,7 @@ class FABGroup extends React.Component<Props, State> {
             style={styles.fab}
           />
         </View>
-      </ThemedPortal>
+      </Portal>
     );
   }
 }

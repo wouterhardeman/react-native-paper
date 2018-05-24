@@ -4,7 +4,7 @@ import * as React from 'react';
 import { StyleSheet, Animated } from 'react-native';
 
 import Text from './Typography/Text';
-import ThemedPortal from './Portal/ThemedPortal';
+import Portal from './Portal/Portal';
 import withTheme from '../core/withTheme';
 import { white } from '../styles/colors';
 import type { Theme } from '../types';
@@ -222,7 +222,7 @@ class Snackbar extends React.Component<Props, State> {
     const { fonts, colors } = theme;
 
     return (
-      <ThemedPortal>
+      <Portal>
         <Animated.View
           onLayout={this._handleLayout}
           style={[
@@ -268,7 +268,7 @@ class Snackbar extends React.Component<Props, State> {
             ) : null}
           </Animated.View>
         </Animated.View>
-      </ThemedPortal>
+      </Portal>
     );
   }
 }

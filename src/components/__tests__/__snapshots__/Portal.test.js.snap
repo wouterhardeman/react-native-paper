@@ -12,14 +12,8 @@ exports[`renders portal with siblings 1`] = `
     ]
   }
 >
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
-  >
-    Outside content
-  </Text>
   <View
+    collapsable={false}
     pointerEvents="box-none"
     style={
       Object {
@@ -30,14 +24,6 @@ exports[`renders portal with siblings 1`] = `
         "top": 0,
       }
     }
-  >
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
-    >
-      Portal content
-    </Text>
-  </View>
+  />
 </View>
 `;

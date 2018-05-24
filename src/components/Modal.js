@@ -10,7 +10,7 @@ import {
   BackHandler,
 } from 'react-native';
 import { polyfill } from 'react-lifecycles-compat';
-import ThemedPortal from './Portal/ThemedPortal';
+import Portal from './Portal/Portal';
 
 type Props = {
   /**
@@ -136,7 +136,7 @@ class Modal extends React.Component<Props, State> {
 
     const { children, dismissable } = this.props;
     return (
-      <ThemedPortal>
+      <Portal>
         <Animated.View
           style={[{ opacity: this.state.opacity }, styles.wrapper]}
         >
@@ -155,7 +155,7 @@ class Modal extends React.Component<Props, State> {
             {children}
           </Animated.View>
         </Animated.View>
-      </ThemedPortal>
+      </Portal>
     );
   }
 }
