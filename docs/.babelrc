@@ -1,12 +1,19 @@
 {
   "presets": [
-    ["env", {
-      "targets": {
-        "browsers": [ ">0.25%", "not ie 11", "not op_mini all"]
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "browsers": [">0.25%", "not ie 11", "not op_mini all"]
+        }
       }
-    }],
-    "stage-2",
-    "react",
+    ],
+    "@babel/preset-react",
+    "@babel/preset-flow",
     "linaria/babel"
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-object-rest-spread"
   ]
 }

@@ -10,9 +10,13 @@
     "prestart": "yarn clean"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
+    "@babel/cli": "^7.1.2",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
     "del-cli": "^1.1.0",
     "file-loader": "^1.1.11",
     "url-loader": "^1.0.1"
@@ -21,7 +25,7 @@
   "license": "MIT",
   "dependencies": {
     "color": "^2.0.1",
-    "component-docs": "^0.13.1",
-    "linaria": "^0.5.0"
+    "component-docs": "^0.13.2",
+    "linaria": "^1.0.0-alpha.9"
   }
 }

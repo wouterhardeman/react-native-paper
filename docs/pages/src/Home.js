@@ -2,37 +2,32 @@
 /* eslint-disable import/no-commonjs */
 
 import * as React from 'react';
-import { css, styles, include } from 'linaria';
+import { styled } from 'linaria/react';
 import { Link } from 'component-docs/components';
 
 export default class Home extends React.Component<{}> {
   render() {
     return (
-      <div {...styles(container)}>
-        <p {...styles(banner)}>
+      <Container>
+        <Banner>
           Looking for the documentation for version 1.0? You can find it{' '}
           <a href="1.0">here</a>.
-        </p>
-        <div {...styles(cover)}>
-          <img
-            {...styles(logo)}
-            src="images/paper-logo.svg"
-            alt="React Native Paper"
-          />
+        </Banner>
+        <Cover>
+          <Logo src="images/paper-logo.svg" alt="React Native Paper" />
           <p>Cross-platform Material Design for React Native</p>
-          <div {...styles(buttons)}>
-            <Link {...styles(button, primary)} to="getting-started">
+          <Buttons>
+            <PrimaryButton as={Link} to="getting-started">
               Get started
-            </Link>
-            <a
-              {...styles(button, secondary)}
+            </PrimaryButton>
+            <SecondaryButton
               href="https://github.com/callstack/react-native-paper"
               target="_blank"
               rel="noopener noreferrer"
             >
               GitHub
-            </a>
-          </div>
+            </SecondaryButton>
+          </Buttons>
           <a
             href="https://snack.expo.io/@satya164/github.com-callstack-react-native-paper:example"
             target="_blank"
@@ -40,39 +35,39 @@ export default class Home extends React.Component<{}> {
           >
             Try it out with Snack
           </a>
-        </div>
-        <div {...styles(gallery)}>
+        </Cover>
+        <Gallery>
           {// eslint-disable-next-line react/no-array-index-key
           screenshots.map((image, i) => <img key={i} src={image} alt="" />)}
-        </div>
-      </div>
+        </Gallery>
+      </Container>
     );
   }
 }
 
-const banner = css`
+const elevated = `
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.24);
+`;
+
+const Banner = styled.p`
   margin: 0;
   padding: 10px 16px;
   text-align: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 `;
 
-const logo = css`
+const Logo = styled.img`
   max-height: 125px;
   width: auto;
 `;
 
-const elevated = css`
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.24);
-`;
-
-const container = css`
+const Container = styled.div`
   width: 100%;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 `;
 
-const cover = css`
+const Cover = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,13 +77,13 @@ const cover = css`
   text-align: center;
 `;
 
-const buttons = css`
+const Buttons = styled.div`
   display: flex;
   flex-direction: row;
   margin: 16px 0;
 `;
 
-const button = css`
+const Button = styled.a`
   appearance: none;
   margin: 8px;
   min-width: 120px;
@@ -109,7 +104,7 @@ const button = css`
   }
 `;
 
-const primary = css`
+const PrimaryButton = styled(Button)`
   background-color: #6200ee;
   border-color: #6200ee;
   color: #fff;
@@ -118,13 +113,13 @@ const primary = css`
   &:hover,
   &:focus,
   &:active {
-    ${include(elevated)};
+    ${elevated};
 
     color: #fff;
   }
 `;
 
-const secondary = css`
+const SecondaryButton = styled(Button)`
   background-color: transparent;
   border-color: rgba(0, 0, 0, 0.24);
   color: #6200ee;
@@ -137,7 +132,7 @@ const secondary = css`
   }
 `;
 
-const gallery = css`
+const Gallery = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -146,7 +141,7 @@ const gallery = css`
   min-width: 0;
 
   > img {
-    ${include(elevated)};
+    ${elevated};
 
     display: block;
     height: 640px;

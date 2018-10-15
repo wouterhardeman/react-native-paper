@@ -1,7 +1,7 @@
 /* @flow */
 
 import * as React from 'react';
-import { css, styles, include } from 'linaria';
+import { styled } from 'linaria/react';
 import color from 'color';
 
 import GooglePlayIcon from '../../components/google-play-icon';
@@ -26,8 +26,8 @@ const data: Data[] = [
 export default class Showcase extends React.Component<{}> {
   render() {
     return (
-      <div {...styles(container)}>
-        <div {...styles(content)}>
+      <Container>
+        <Content>
           <h1>Who&apos;s using Paper?</h1>
           <p>
             Check out these apps built using Paper. Send us a{' '}
@@ -40,27 +40,23 @@ export default class Showcase extends React.Component<{}> {
             </a>{' '}
             to add your app to this list.
           </p>
-        </div>
-        <div {...styles(gallery)}>
+        </Content>
+        <Gallery>
           {data.map(item => {
             const tintColor = color(item.color).light() ? '#000000' : '#FFFFFF';
             return (
               <div key={item.image}>
-                <div {...styles(imageContainer)}>
-                  <img {...styles(image)} src={item.image} alt="" />
-                  <div
-                    {...styles(info)}
-                    style={{ backgroundColor: item.color }}
-                  >
-                    <h3
-                      {...styles(appName)}
+                <ImageContainer>
+                  <Image src={item.image} alt="" />
+                  <Info style={{ backgroundColor: item.color }}>
+                    <AppName
                       style={{
                         color: tintColor,
                       }}
                     >
                       {item.name}
-                    </h3>
-                    <div {...styles(badgeContainer)}>
+                    </AppName>
+                    <BadgeContainer>
                       <a
                         href={item.android || null}
                         target="_blank"
@@ -69,7 +65,7 @@ export default class Showcase extends React.Component<{}> {
                       >
                         <GooglePlayIcon color={tintColor} />
                       </a>
-                      <div {...styles(separation)} />
+                      <Separation />
                       <a
                         href={item.ios || null}
                         target="_blank"
@@ -78,26 +74,26 @@ export default class Showcase extends React.Component<{}> {
                       >
                         <IphoneIcon color={tintColor} />
                       </a>
-                    </div>
-                  </div>
-                </div>
+                    </BadgeContainer>
+                  </Info>
+                </ImageContainer>
               </div>
             );
           })}
-        </div>
-      </div>
+        </Gallery>
+      </Container>
     );
   }
 }
 
-const container = css`
+const Container = styled.div`
   padding: 24px 0;
   width: 100%;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 `;
 
-const content = css`
+const Content = styled.div`
   padding: 0 48px;
 
   @media (max-width: 680px) {
@@ -105,17 +101,13 @@ const content = css`
   }
 `;
 
-const elevated = css`
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.24);
-`;
-
-const appName = css`
+const AppName = styled.h3`
   font-size: 16px;
   margin-top: 0;
   margin-bottom: 12px;
 `;
 
-const gallery = css`
+const Gallery = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -128,24 +120,23 @@ const gallery = css`
   }
 `;
 
-const info = css`
+const Info = styled.div`
   height: 96px;
   padding: 12px;
   transform: translateY(0);
   transition: 150ms;
 `;
 
-const imageContainer = css`
-  ${include(elevated)};
-
+const ImageContainer = styled.div`
   height: ${480 + 48}px;
   width: auto;
   overflow: hidden;
   margin: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.24);
 
   &:hover,
   &:focus {
-    .${info} {
+    .${Info} {
       transform: translateY(-48px);
     }
   }
@@ -155,19 +146,19 @@ const imageContainer = css`
   }
 `;
 
-const image = css`
+const Image = styled.img`
   display: block;
   max-height: 480px;
   width: auto;
 `;
 
-const badgeContainer = css`
+const BadgeContainer = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 16px;
   padding-left: 3px;
 `;
 
-const separation = css`
+const Separation = styled.div`
   margin: 0 10px;
 `;
